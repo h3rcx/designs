@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/welcome.css"> <!-- Link the contact-specific styles -->
+    <link rel="stylesheet" href="css/projects.css"> <!-- Link the contact-specific styles -->
+    <link rel="stylesheet" href="css/contact.css"> <!-- Link the contact-specific styles -->
 </head>
 <body>
 
@@ -17,28 +20,27 @@
                     <img src="logo.png" alt="Logo">
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#">Welcome</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" class="nav-item active" data-section="welcome">Welcome</a></li>
+                    <li><a href="#" class="nav-item" data-section="projects">Projects</a></li>
+                    <li><a href="#" class="nav-item" data-section="contact">Contact</a></li>
                     <li><a href="mailto:hercjuver@gmail.com" class="contact-btn">Get in touch</a></li>
                 </ul>
             </div>
         </nav>
-    </header>    
+    </header>
 
-    <!-- Main Content -->
+    <!-- Dynamic Content Section -->
     <main>
-        <div class="content">
-            <!-- Your main content goes here -->
+        <div id="content">
+            <h1>Welcome</h1>
+            <p>This is the welcome section. Click on the navigation items to change content dynamically.</p>
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
-        <div class="contact-section">
-            <img src="email-icon.png" alt="Email Icon">
-            <p>Write to me on</p>
-            <a href="mailto:hercjuver@gmail.com">hercjuver@gmail.com</a>
+        <div id="contact-footer" class="hidden">
+            <!-- Content will be dynamically inserted here -->
         </div>
         <div class="footer-bottom">
             <p>No terms nor conditions</p>
@@ -46,6 +48,11 @@
             <p>No cookies</p>
         </div>
     </footer>
+    
+    
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>

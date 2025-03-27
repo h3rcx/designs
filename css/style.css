@@ -5,7 +5,7 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Makes sure the body takes the full viewport height */
+    min-height: 100vh;
 }
 
 /* Navigation styles */
@@ -20,7 +20,7 @@ header {
 nav {
     background: white;
     padding: 40px 120px;
-    border-bottom: 1px solid #060606;
+    border-bottom: 0.5px solid #060606;
 }
 
 .nav-container {
@@ -31,9 +31,8 @@ nav {
     width: "100%";
 }
 
-/* Logo Styling */
 .logo img {
-    height: 40px; /* Adjust size as needed */
+    height: 40px;
 }
 
 /* Navigation Links */
@@ -42,7 +41,8 @@ nav {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 25px; /* Space between menu items */
+    gap: 25px;
+    border-radius: 20px;
 }
 
 .nav-links li {
@@ -55,56 +55,57 @@ nav {
     font-size: 16px;
     font-weight: 400;
     padding: 5px 10px;
+    border: 0.5px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* Selected/Active Nav Item */
+.nav-links li a.active {
+    color: black;
+    background: #d7ff3e;
+    border: 1px solid black; /* 0.5px bolder */
+    font-weight: 500;
+    border-radius: 20px;
 }
 
 /* Get in Touch Button */
-.contact-btn {
-    background: #d7ff3e;
+.nav-links li a.contact-btn {
     padding: 10px 20px;
     border-radius: 20px;
-    font-weight: bold;
-    border: 2px solid black;
 }
 
-
-/* Main Content should take remaining space */
+/* Main Content */
 main {
-    flex: 1; /* Makes main content take up all available space */
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: blueviolet;
+    text-align: center;
+    padding-left: 120px;
+    padding-right: 120px;
+    background-color: yellow;
 }
 
-/* Footer styles */
-footer {
+/* Footer */
+
+/* Initially hidden, use .hidden to hide the footer content */
+.hidden {
+    display: none;
+}
+
+/* Footer content style when it is visible */
+#contact-footer {
+    text-align: center;
+    padding: 120px 0;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.footer-bottom {
     background: #d7ff3e;
     text-align: center;
     padding: 30px 0;
 }
 
-.contact-section {
-    margin-bottom: 20px;
-}
 
-.contact-section img {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 10px;
-}
 
-.contact-section p {
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-.contact-section a {
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.footer-bottom {
-    font-size: 14px;
-}
