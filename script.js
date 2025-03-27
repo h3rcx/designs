@@ -6,8 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const sections = {
         "welcome": "content/welcome.html",
         "projects": "content/projects.html",
-        "contact": "content/contact.html"
+        "contact": "content/contact.html",
+        "project-template": "content/project-template.html" // Add the project-template section
     };
+
+    // Store the footer content once to avoid reloading it multiple times
+    let footerContentLoaded = false;
 
     // Function to update footer visibility based on the current section
     function updateFooterVisibility(currentSection) {
@@ -28,14 +32,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Update the footer visibility when the content is loaded
                 updateFooterVisibility(section);
 
-                // Load contact footer content dynamically when not on 'contact' page
-                if (section !== 'contact') {
+                // Load the contact footer content if not already done
+                if (section !== 'contact' && !footerContentLoaded) {
                     fetch('content/contact.html')
                         .then(response => response.text())
                         .then(data => {
                             contactFooterContent.innerHTML = data;
+                            footerContentLoaded = true; // Mark footer content as loaded
                         });
                 }
+
+                // If we're on the projects page, add click event listeners to images
+                if (section === 'projects') {
+                    const projectImages = document.querySelectorAll('.project-cover img');
+                    projectImages.forEach(img => {
+                        img.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            loadProjectTemplate(); // Load the project details template
+                        });
+                    });
+                }
+            });
+
+        // Update the URL in the browser without reloading the page
+        history.pushState({ section }, '', `#${section}`);
+    }
+
+    // Function to load the project template
+    function loadProjectTemplate() {
+        fetch(sections["project-template"])
+            .then(response => response.text())
+            .then(data => {
+                content.innerHTML = data; // Replace content with the project details
+
+                // Here you can modify the project details dynamically, if needed
+                // Example: You can inject specific project info based on which image was clicked.
             });
     }
 
@@ -59,5 +90,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Load the content for the clicked section
             loadContent(section);
         });
+    });
+
+    // Handle browser back/forward navigation
+    window.addEventListener("popstate", function (e) {
+        const section = e.state ? e.state.section : "welcome";
+        loadContent(section);
     });
 });

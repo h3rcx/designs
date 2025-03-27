@@ -1,0 +1,6 @@
+/* For the images, add custom sizing */
+.project-template-cover img {
+    max-width: 100%; /* Ensures image takes full width of the container */
+    max-height: 100%; /* Ensures image takes full height of the container */
+    object-fit: cover; /* Ensures the image scales correctly */
+}
