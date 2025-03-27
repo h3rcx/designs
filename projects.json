@@ -1,0 +1,230 @@
+[
+    {
+        "id": "1",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "2",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/project2-cover.jpg",
+        "images": [
+            "assets/img/project2-img1.jpg",
+            "assets/img/project2-img2.jpg",
+            "assets/img/project2-img3.jpg",
+            "assets/img/project2-img3.jpg",
+            "assets/img/project2-img1.jpg",
+            "assets/img/project2-img2.jpg",
+            "assets/img/project2-img3.jpg",
+            "assets/img/project2-img3.jpg",
+            "assets/img/project2-img3.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "3",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/project2-cover.jpg",
+        "images": [
+            "assets/img/project2-img1.jpg",
+            "assets/img/project2-img2.jpg",
+            "assets/img/project2-img3.jpg",
+            "assets/img/project2-img3.jpg",
+            "assets/img/project2-img1.jpg",
+            "assets/img/project2-img2.jpg",
+            "assets/img/project2-img3.jpg",
+            "assets/img/project2-img3.jpg",
+            "assets/img/project2-img3.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "4",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "5",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "6",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "7",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "8",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "9",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "10",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "11",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    },
+    {
+        "id": "12",
+        "title": "Web Development",
+        "description": "A collection of web development projects that showcase responsive design and interactive features.",
+        "cover": "assets/img/me.png",
+        "images": [
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg",
+            "assets/img/hercules.jpg"
+        ],
+        "summaryTitle": "Summary",
+        "summaryDescription": "Description of the summary."
+    }
+]

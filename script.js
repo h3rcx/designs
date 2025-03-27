@@ -7,18 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
         "welcome": "content/welcome.html",
         "projects": "content/projects.html",
         "contact": "content/contact.html",
-        "project-template": "content/project-template.html" // Add the project-template section
+        "project-template": "content/project-template.html"
     };
 
-    // Store the footer content once to avoid reloading it multiple times
+    let projectsData = {}; // Store projects from JSON
     let footerContentLoaded = false;
 
-    // Function to update footer visibility based on the current section
+    // Function to update footer visibility
     function updateFooterVisibility(currentSection) {
         if (currentSection === 'contact') {
-            contactFooterContent.classList.add('hidden'); // Hide footer on 'contact' page
+            contactFooterContent.classList.add('hidden');
         } else {
-            contactFooterContent.classList.remove('hidden'); // Show footer on all other pages
+            contactFooterContent.classList.remove('hidden');
         }
     }
 
@@ -28,67 +28,89 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.text())
             .then(data => {
                 content.innerHTML = data;
-
-                // Update the footer visibility when the content is loaded
                 updateFooterVisibility(section);
 
-                // Load the contact footer content if not already done
+                // Load the footer only once
                 if (section !== 'contact' && !footerContentLoaded) {
                     fetch('content/contact.html')
                         .then(response => response.text())
                         .then(data => {
                             contactFooterContent.innerHTML = data;
-                            footerContentLoaded = true; // Mark footer content as loaded
+                            footerContentLoaded = true;
                         });
                 }
 
-                // If we're on the projects page, add click event listeners to images
+                // If the projects page is loaded, add event listeners for images
                 if (section === 'projects') {
-                    const projectImages = document.querySelectorAll('.project-cover img');
-                    projectImages.forEach(img => {
-                        img.addEventListener('click', function (e) {
-                            e.preventDefault();
-                            loadProjectTemplate(); // Load the project details template
-                        });
-                    });
+                    addProjectClickListeners();
                 }
             });
 
-        // Update the URL in the browser without reloading the page
+        // Update browser history state
         history.pushState({ section }, '', `#${section}`);
     }
 
-    // Function to load the project template
-    function loadProjectTemplate() {
-        fetch(sections["project-template"])
-            .then(response => response.text())
+    // Function to fetch project data from JSON
+    function loadProjectsData() {
+        return fetch("projects.json")
+            .then(response => response.json())
             .then(data => {
-                content.innerHTML = data; // Replace content with the project details
-
-                // Here you can modify the project details dynamically, if needed
-                // Example: You can inject specific project info based on which image was clicked.
+                projectsData = data.reduce((acc, project) => {
+                    acc[project.id] = project;
+                    return acc;
+                }, {});
             });
     }
 
-    // Initial load (welcome section by default)
-    loadContent("welcome");
+    // Function to attach event listeners to project images
+    function addProjectClickListeners() {
+        document.querySelectorAll('.project-cover img').forEach(img => {
+            img.addEventListener('click', function (e) {
+                e.preventDefault();
+                const projectId = this.getAttribute("data-project-id");
+                if (projectsData[projectId]) {
+                    loadProjectTemplate(projectsData[projectId]);
+                }
+            });
+        });
+    }
 
-    // Handle nav item clicks
+    // Function to load the project template dynamically
+    function loadProjectTemplate(project) {
+        fetch(sections["project-template"])
+            .then(response => response.text())
+            .then(template => {
+                template = template.replace("{title}", project.title);
+                template = template.replace("{description}", project.description);
+                template = template.replace("{summary-title}", project.summaryTitle);
+                template = template.replace("{summary-description}", project.summaryDescription);
+            
+                content.innerHTML = template;
+
+                // Select all project images
+                const projectImages = document.querySelectorAll(".project-cover img");
+
+                // Loop through images and replace src with corresponding image from JSON
+                projectImages.forEach((img, index) => {
+                    img.src = project.images[index]; // Fallback for missing images
+                    img.alt = `Project Image ${index + 1}`; // Improve accessibility
+                });
+            });
+
+        // Update browser history for project
+        history.pushState({ section: "project-template" }, '', `#project-${project.id}`);
+    }
+
+    // Initial loading
+    loadProjectsData().then(() => loadContent("welcome"));
+
+    // Handle navigation clicks
     navItems.forEach(item => {
         item.addEventListener("click", function (e) {
             e.preventDefault();
-
-            // Remove 'active' class from all nav items
             navItems.forEach(nav => nav.classList.remove("active"));
-
-            // Add 'active' class to the clicked item
             this.classList.add("active");
-
-            // Get the section from the data-section attribute
-            const section = this.getAttribute("data-section");
-
-            // Load the content for the clicked section
-            loadContent(section);
+            loadContent(this.getAttribute("data-section"));
         });
     });
 
