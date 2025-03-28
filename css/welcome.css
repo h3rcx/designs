@@ -1,6 +1,7 @@
 .welcome-container {
     min-height: 400px;
     width: 100%;
+    padding-left: 15%; padding-right: 15%;
 }
 
 .welcome-container img {
