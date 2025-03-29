@@ -81,6 +81,11 @@ main {
     height: auto;
 }
 
+/* List height */
+ul {
+    line-height: 1.8; /* Adjust the value as needed */
+}
+
 /* Footer */
 
 /* Initially hidden, use .hidden to hide the footer content */
