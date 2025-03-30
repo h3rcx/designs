@@ -7,8 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "welcome": "content/welcome.html",
         "projects": "content/projects.html",
         "contact": "content/contact.html",
-        "project-template": "content/project-template.html"
+        "project-template": "content/project-template.html",
+        "project1": "content/project1.html"  // Added this
     };
+    
 
     let projectsData = {}; // Store projects from JSON
     let footerContentLoaded = false;
