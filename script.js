@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "projects": "content/projects.html",
         "contact": "content/contact.html",
         "project-template": "content/project-template.html",
-        "project1": "content/project1.html"  // Added this
     };
     
 
@@ -52,59 +51,65 @@ document.addEventListener("DOMContentLoaded", function () {
         history.pushState({ section }, '', `#${section}`);
     }
 
-    // Function to fetch project data from JSON
-    function loadProjectsData() {
-        return fetch("projects.json")
-            .then(response => response.json())
-            .then(data => {
-                projectsData = data.reduce((acc, project) => {
-                    acc[project.id] = project;
-                    return acc;
-                }, {});
-            });
-    }
-
     // Function to attach event listeners to project images
     function addProjectClickListeners() {
         document.querySelectorAll('.project-cover img').forEach(img => {
             img.addEventListener('click', function (e) {
                 e.preventDefault();
                 const projectId = this.getAttribute("data-project-id");
-                if (projectsData[projectId]) {
-                    loadProjectTemplate(projectsData[projectId]);
-                }
+                loadProject(projectId);
             });
         });
     }
 
-    // Function to load the project template dynamically
-    function loadProjectTemplate(project) {
-        fetch(sections["project-template"])
-            .then(response => response.text())
-            .then(template => {
-                template = template.replace("{title}", project.title);
-                template = template.replace("{description}", project.description);
-                template = template.replace("{summary-title}", project.summaryTitle);
-                template = template.replace("{summary-description}", project.summaryDescription);
-            
-                content.innerHTML = template;
+    // Function to load the project dynamically based on ID
+    function loadProject(projectId) {
+        const projectFileName = `content/project${projectId}.html`;
 
-                // Select all project images
-                const projectImages = document.querySelectorAll(".project-cover img");
+        fetch(projectFileName)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Project file not found");
+                }
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById("content").innerHTML = html;
 
-                // Loop through images and replace src with corresponding image from JSON
-                projectImages.forEach((img, index) => {
-                    img.src = project.images[index]; // Fallback for missing images
-                    img.alt = `Project Image ${index + 1}`; // Improve accessibility
-                });
-            });
-
-        // Update browser history for project
-        history.pushState({ section: "project-template" }, '', `#project-${project.id}`);
+                // Update browser history
+                history.pushState({ section: `project-${projectId}` }, '', `#project-${projectId}`);
+            })
+            .catch(error => console.error("Error loading project:", error));
     }
 
+    // We used to load project content into templates
+    // function loadProjectTemplate(project) {
+    //     fetch(sections["project-template"])
+    //         .then(response => response.text())
+    //         .then(template => {
+    //             template = template.replace("{title}", project.title);
+    //             template = template.replace("{description}", project.description);
+    //             template = template.replace("{summary-title}", project.summaryTitle);
+    //             template = template.replace("{summary-description}", project.summaryDescription);
+            
+    //             content.innerHTML = template;
+
+    //             // Select all project images
+    //             const projectImages = document.querySelectorAll(".project-cover img");
+
+    //             // Loop through images and replace src with corresponding image from JSON
+    //             projectImages.forEach((img, index) => {
+    //                 img.src = project.images[index]; // Fallback for missing images
+    //                 img.alt = `Project Image ${index + 1}`; // Improve accessibility
+    //             });
+    //         });
+
+    //     // Update browser history for project
+    //     history.pushState({ section: "project-template" }, '', `#project-${project.id}`);
+    // }
+
     // Initial loading
-    loadProjectsData().then(() => loadContent("welcome"));
+    loadContent("welcome");
 
     // Handle navigation clicks
     navItems.forEach(item => {
