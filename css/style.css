@@ -13,6 +13,14 @@ h1 {
     font-weight: 2000;
 }
 
+h2 {
+    font-family: 'Jura', sans-serif;
+    font-weight: 2000;
+    -webkit-text-stroke: 0.7px #000; /* Outer stroke in black */
+    color: #d7ff3e;
+    text-transform: uppercase; /* Converts text to uppercase */
+}
+
 /* Navigation styles */
 header {
     background: white;
