@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to load content dynamically
     function loadContent(section) {
+        // Scroll to top
+        window.scrollTo(0, 0);
         fetch(sections[section])
             .then(response => response.text())
             .then(data => {
@@ -64,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to load the project dynamically based on ID
     function loadProject(projectId) {
+        // Scroll to top
+        window.scrollTo(0, 0);
         const projectFileName = `content/project${projectId}.html`;
 
         fetch(projectFileName)
