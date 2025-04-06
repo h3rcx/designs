@@ -1,3 +1,11 @@
+ // Toggle burger menu
+ function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const burger = document.querySelector('.burger');
+    navLinks.classList.toggle('active');
+    burger.classList.toggle('toggle');
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const navItems = document.querySelectorAll(".nav-item");
     const content = document.getElementById("content");
@@ -125,6 +133,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Close mobile menu when a nav item is clicked
+    navItems.forEach(item => {
+        item.addEventListener("click", () => {
+            document.querySelector('.nav-links').classList.remove('active');
+            document.querySelector('.burger').classList.remove('toggle');
+        });
+    });
+
+    // Handle navigation clicks
+    navItems.forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+            navItems.forEach(nav => nav.classList.remove("active"));
+            this.classList.add("active");
+            loadContent(this.getAttribute("data-section"));
+
+            // ✅ CLOSE BURGER MENU on click
+            const navLinks = document.querySelector('.nav-links');
+            const burger = document.querySelector('.burger');
+            navLinks.classList.remove('active');
+            burger.classList.remove('toggle');
+        });
+    });
+    
     // Handle browser back/forward navigation
     window.addEventListener("popstate", function (e) {
         const section = e.state ? e.state.section : "welcome";

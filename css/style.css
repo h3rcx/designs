@@ -72,6 +72,16 @@ nav {
     transition: all 0.3s ease;
 }
 
+.burger.toggle .line1 {
+    transform: rotate(-50deg) translate(-6px, 6px);
+}
+.burger.toggle .line2 {
+    opacity: 0;
+}
+.burger.toggle .line3 {
+    transform: rotate(50deg) translate(-6px, -6px);
+}
+
 /* Selected/Active Nav Item */
 .nav-links li a.active {
     color: black;
@@ -81,6 +91,47 @@ nav {
     border-radius: 20px;
 }
 
+/* Burger nav */
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  
+  .burger div {
+    width: 27px;
+    height: 4px;
+    background: #151515;
+  }
+
+/* Responsive styles */
+@media (max-width: 700px) {
+    .nav-links {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: -100vw;              /* Start off-screen to the left */
+        width: 80vw;               /* Optional: adjust width as needed */
+        height: 100vh;             /* Full screen height */
+        background: #d7ff3e;
+        padding: 80px 24px 24px 24px;
+        transition: left 0.3s ease;
+        z-index: 999;
+        display: flex;
+    }
+
+    .nav-links.active {
+        left: 0;                   /* Slide into view */
+    }
+
+    .burger {
+        display: flex;
+        position: relative;
+        z-index: 1000;             /* Keep it above nav menu */
+    }
+}
+  
 /* Get in Touch Button */
 .nav-links li a.contact-btn {
     padding: 10px 20px;
