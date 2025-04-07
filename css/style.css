@@ -186,8 +186,44 @@ ul {
     margin-top: 5% ;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 380px) {
     * {
       box-sizing: border-box;
+    }
+  }
+
+ /* === Responsive Breakpoints === */
+ /*@media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 2fr;
+      gap: 24px;
+    }
+
+    .skill-container {
+      text-align: center;
+      padding: 16px 0;
+    }
+
+    .welcome-container {
+      padding: 0 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+
+    .welcome-container {
+      padding: 0 12px;
+    }
+
+    .skill-container h1 {
+      font-size: 20px;
+    }
+
+    .skill-container p,
+    .skill-container li {
+      font-size: 16px;
     }
   }

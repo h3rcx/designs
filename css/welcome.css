@@ -28,3 +28,14 @@
     flex: 1;  /* This makes the list take up available space (optional) */
     padding: 0;  /* This makes the list take up available space (optional) */
 }
+
+@media (max-width: 768px) {
+    .welcome-container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .skill-container {
+        flex-direction: column;
+    }
+}
