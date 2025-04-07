@@ -186,5 +186,8 @@ ul {
     margin-top: 5% ;
 }
 
-
-
+@media (max-width: 480px) {
+    * {
+      box-sizing: border-box;
+    }
+  }
