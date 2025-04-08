@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
     
-        // ✅ Only push to history if it's not the first load
-        if (!isInitialLoad) {
+        // Only push to history for non-initial loads and non-welcome sections
+        if (!isInitialLoad && section !== "welcome") {
             history.pushState({ section }, '', `#${section}`);
         }
     }
