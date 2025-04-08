@@ -32,16 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to load content dynamically
-    function loadContent(section) {
-        // Scroll to top
+    function loadContent(section, isInitialLoad = false) {
         window.scrollTo(0, 0);
+    
         fetch(sections[section])
             .then(response => response.text())
             .then(data => {
                 content.innerHTML = data;
                 updateFooterVisibility(section);
-
-                // Load the footer only once
+    
                 if (section !== 'contact' && !footerContentLoaded) {
                     fetch('content/contact.html')
                         .then(response => response.text())
@@ -50,16 +49,18 @@ document.addEventListener("DOMContentLoaded", function () {
                             footerContentLoaded = true;
                         });
                 }
-
-                // If the projects page is loaded, add event listeners for images
+    
                 if (section === 'projects') {
                     addProjectClickListeners();
                 }
             });
-
-        // Update browser history state
-        history.pushState({ section }, '', `#${section}`);
+    
+        // ✅ Only push to history if it's not the first load
+        if (!isInitialLoad) {
+            history.pushState({ section }, '', `#${section}`);
+        }
     }
+    
 
     // Function to attach event listeners to project images
     function addProjectClickListeners() {
@@ -121,7 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
 
     // Initial loading
-    loadContent("welcome");
+    loadContent("welcome", true); // pass a second param to flag it's the initial load
+
 
     // Handle navigation clicks
     navItems.forEach(item => {
