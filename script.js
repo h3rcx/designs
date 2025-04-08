@@ -92,11 +92,18 @@ document.addEventListener("DOMContentLoaded", function () {
     navItems.forEach(item => {
         item.addEventListener("click", function (e) {
             e.preventDefault();
+    
+            // Remove active class from all nav items
             navItems.forEach(nav => nav.classList.remove("active"));
             this.classList.add("active");
-
+    
+            // Load new section
             const section = this.getAttribute("data-section");
             loadContent(section);
+    
+            // 🔒 Close burger menu on mobile
+            document.querySelector('.nav-links').classList.remove('active');
+            document.querySelector('.burger').classList.remove('toggle');
         });
     });
 
