@@ -12,17 +12,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const contactFooterContent = document.getElementById("contact-footer");
 
     const sections = {
+        "/": "welcome",
+        "/welcome": "welcome",
+        "/projects": "projects",
+        "/contact": "contact",
+    };
+
+    const sectionFiles = {
         "welcome": "content/welcome.html",
         "projects": "content/projects.html",
         "contact": "content/contact.html",
         "project-template": "content/project-template.html",
     };
-    
 
-    let projectsData = {}; // Store projects from JSON
-    let footerContentLoaded = false;
-
-    // Function to update footer visibility
     function updateFooterVisibility(currentSection) {
         if (currentSection === 'contact') {
             contactFooterContent.classList.add('hidden');
@@ -31,38 +33,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Function to load content dynamically
-    function loadContent(section, isInitialLoad = false) {
-        window.scrollTo(0, 0);
-    
-        fetch(sections[section])
+    function loadContent(section, push = true) {
+        const file = sectionFiles[section];
+        if (!file) return;
+
+        fetch(file)
             .then(response => response.text())
             .then(data => {
                 content.innerHTML = data;
                 updateFooterVisibility(section);
-    
-                if (section !== 'contact' && !footerContentLoaded) {
-                    fetch('content/contact.html')
-                        .then(response => response.text())
-                        .then(data => {
-                            contactFooterContent.innerHTML = data;
-                            footerContentLoaded = true;
-                        });
-                }
-    
-                if (section === 'projects') {
+
+                if (section === "projects") {
                     addProjectClickListeners();
                 }
-            });
-    
-        // Only push to history for non-initial loads and non-welcome sections
-        if (!isInitialLoad && section !== "welcome") {
-            history.pushState({ section }, '', `#${section}`);
-        }
-    }
-    
 
-    // Function to attach event listeners to project images
+                if (push) {
+                    const path = section === "welcome" ? "/" : `/${section}`;
+                    history.pushState({ section }, '', path);
+                }
+            });
+    }
+
+    function getSectionFromPath(path) {
+        return sections[path] || "welcome";
+    }
+
     function addProjectClickListeners() {
         document.querySelectorAll('.project-cover img').forEach(img => {
             img.addEventListener('click', function (e) {
@@ -73,95 +68,42 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Function to load the project dynamically based on ID
     function loadProject(projectId) {
-        // Scroll to top
-        window.scrollTo(0, 0);
         const projectFileName = `content/project${projectId}.html`;
 
         fetch(projectFileName)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error("Project file not found");
-                }
+                if (!response.ok) throw new Error("Project not found");
                 return response.text();
             })
             .then(html => {
-                document.getElementById("content").innerHTML = html;
-
-                // Update browser history
-                history.pushState({ section: `project-${projectId}` }, '', `#project-${projectId}`);
+                content.innerHTML = html;
+                history.pushState({ section: `project-${projectId}` }, '', `/project-${projectId}`);
             })
-            .catch(error => console.error("Error loading project:", error));
+            .catch(console.error);
     }
 
-    // We used to load project content into templates
-    // function loadProjectTemplate(project) {
-    //     fetch(sections["project-template"])
-    //         .then(response => response.text())
-    //         .then(template => {
-    //             template = template.replace("{title}", project.title);
-    //             template = template.replace("{description}", project.description);
-    //             template = template.replace("{summary-title}", project.summaryTitle);
-    //             template = template.replace("{summary-description}", project.summaryDescription);
-            
-    //             content.innerHTML = template;
+    // 🧠 INITIAL LOAD BASED ON PATHNAME
+    const currentPath = window.location.pathname;
+    const initialSection = getSectionFromPath(currentPath);
+    loadContent(initialSection, false);
 
-    //             // Select all project images
-    //             const projectImages = document.querySelectorAll(".project-cover img");
-
-    //             // Loop through images and replace src with corresponding image from JSON
-    //             projectImages.forEach((img, index) => {
-    //                 img.src = project.images[index]; // Fallback for missing images
-    //                 img.alt = `Project Image ${index + 1}`; // Improve accessibility
-    //             });
-    //         });
-
-    //     // Update browser history for project
-    //     history.pushState({ section: "project-template" }, '', `#project-${project.id}`);
-    // }
-
-    // Initial loading
-    loadContent("welcome", true); // pass a second param to flag it's the initial load
-
-
-    // Handle navigation clicks
+    // NAV CLICKS
     navItems.forEach(item => {
         item.addEventListener("click", function (e) {
             e.preventDefault();
             navItems.forEach(nav => nav.classList.remove("active"));
             this.classList.add("active");
-            loadContent(this.getAttribute("data-section"));
+
+            const section = this.getAttribute("data-section");
+            loadContent(section);
         });
     });
 
-    // Close mobile menu when a nav item is clicked
-    navItems.forEach(item => {
-        item.addEventListener("click", () => {
-            document.querySelector('.nav-links').classList.remove('active');
-            document.querySelector('.burger').classList.remove('toggle');
-        });
-    });
-
-    // Handle navigation clicks
-    navItems.forEach(item => {
-        item.addEventListener("click", function (e) {
-            e.preventDefault();
-            navItems.forEach(nav => nav.classList.remove("active"));
-            this.classList.add("active");
-            loadContent(this.getAttribute("data-section"));
-
-            // ✅ CLOSE BURGER MENU on click
-            const navLinks = document.querySelector('.nav-links');
-            const burger = document.querySelector('.burger');
-            navLinks.classList.remove('active');
-            burger.classList.remove('toggle');
-        });
-    });
-    
-    // Handle browser back/forward navigation
-    window.addEventListener("popstate", function (e) {
-        const section = e.state ? e.state.section : "welcome";
-        loadContent(section);
+    // HANDLE POPSTATE
+    window.addEventListener("popstate", (e) => {
+        const path = window.location.pathname;
+        const section = getSectionFromPath(path);
+        loadContent(section, false);
     });
 });
