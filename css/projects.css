@@ -1,6 +1,6 @@
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Automatically adjusts columns based on content */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Automatically adjusts columns based on content */
     gap: 16px;
     padding-left: 6%;
     padding-right: 6%;

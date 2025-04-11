@@ -12,8 +12,14 @@
 }
 
 .skill-container {
-    gap: 24px;                /* Optional: Add space between items */
+    flex-wrap: wrap;
+    gap: 24px;                 /* Optional: Add space between items */
     text-align: left;
+}
+
+.skill-container > * {
+    min-width: 60px;
+    flex: 1 1 60px; /* Grow/shrink with a base size of 60px */
 }
 
 .skill-container h1 {
@@ -25,7 +31,6 @@
 }
 
 .skill-container ul {
-    flex: 1;  /* This makes the list take up available space (optional) */
     padding: 0;  /* This makes the list take up available space (optional) */
 }
 
