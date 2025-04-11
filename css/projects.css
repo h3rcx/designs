@@ -2,8 +2,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Automatically adjusts columns based on content */
     gap: 16px;
-    padding-left: 6%;
-    padding-right: 6%;
+    padding-left: 12%;
+    padding-right: 12%;
     flex-wrap: wrap;
 }
 
@@ -58,6 +58,8 @@
 .project-header {
     margin: 0;
     padding: 24px 8%;
+    padding-left: 12%;
+    padding-right: 12%;
 }
 
 .project-header h1 {
