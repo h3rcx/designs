@@ -31,6 +31,7 @@
 
 .skill-container ul {
     padding: 0;  /* This makes the list take up available space (optional) */
+    flex: 1;  /* This makes the list take up available space (optional) */
 }
 
 @media (max-width: 768px) {
