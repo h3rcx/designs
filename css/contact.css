@@ -37,6 +37,5 @@
 }
 
 .contact-section a:hover {
-    text-decoration: underline;
     transform: scale(1.1); /* Slightly increase size on hover */
 }

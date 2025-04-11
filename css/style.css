@@ -47,6 +47,12 @@ nav {
 
 .logo img {
     height: 40px;
+    display: inline-block; /* Make sure scaling applies properly */
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
 }
 
 /* Navigation Links */
@@ -60,7 +66,8 @@ nav {
 }
 
 .nav-links li {
-    display: inline;
+    display: inline-block; /* Make sure scaling applies properly */
+    transition: transform 0.3s ease;
 }
 
 .nav-links li a {
@@ -71,6 +78,10 @@ nav {
     padding: 5px 10px;
     border: 1px solid transparent;
     transition: all 0.3s ease;
+}
+
+.nav-links li:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
 }
 
 .burger.toggle .line1 {

@@ -25,6 +25,12 @@
     object-fit: cover; /* Ensures the image scales correctly */
     object-position: center;
     aspect-ratio: inherit;
+    display: inline-block; /* Make sure scaling applies properly */
+    transition: transform 0.3s ease;
+}
+
+.project-cover img:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
 }
 
 .content-video {
