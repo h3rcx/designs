@@ -1,5 +1,5 @@
 .welcome-container {
-    min-height: 400px;
+    min-height: 500px;
     width: 100%;
     overflow-x: hidden;
     padding-bottom: 80px;
@@ -18,8 +18,7 @@
 }
 
 .skill-container > * {
-    min-width: 60px;
-    flex: 1 1 60px; /* Grow/shrink with a base size of 60px */
+    flex: 1 1 200px; /* Grow/shrink with a base size of 60px */
 }
 
 .skill-container h1 {
