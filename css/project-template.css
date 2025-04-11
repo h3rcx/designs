@@ -4,15 +4,3 @@
     max-height: 100%; /* Ensures image takes full height of the container */
     object-fit: cover; /* Ensures the image scales correctly */
 }
-
-.video-wrapper {
-    aspect-ratio: 9 / 16; /* Vertical format */
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
