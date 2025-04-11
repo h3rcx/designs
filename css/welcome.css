@@ -15,6 +15,7 @@
     flex-wrap: wrap;
     gap: 24px;                 /* Optional: Add space between items */
     text-align: left;
+    padding-bottom: 24px;
 }
 
 .skill-container > * {
@@ -23,10 +24,12 @@
 
 .skill-container h1 {
     flex: 1;  /* This makes the heading take up available space (optional) */
+    padding-bottom: 16px;
 }
 
 .skill-container p {
     flex: 2;  /* This makes the paragraph take up more space (optional) */
+    padding-bottom: 16px;
 }
 
 .skill-container ul {
