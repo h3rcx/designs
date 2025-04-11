@@ -22,17 +22,27 @@ document.addEventListener("DOMContentLoaded", function () {
         "welcome": "content/welcome.html",
         "projects": "content/projects.html",
         "contact": "content/contact.html",
-        "project-template": "content/project-template.html",
     };
 
+    // Load contact footer content once
+    fetch("content/contact-footer.html")
+    .then(response => response.text())
+    .then(html => {
+        contactFooterContent.innerHTML = html;
+    })
+    .catch(error => {
+        console.error("Failed to load contact footer:", error);
+    });
+    
     function updateFooterVisibility(currentSection) {
+        // Hide the footer only on contact page
         if (currentSection === 'contact') {
             contactFooterContent.classList.add('hidden');
         } else {
             contactFooterContent.classList.remove('hidden');
         }
     }
-
+    
     function loadContent(section, push = true) {
         const file = sectionFiles[section];
         if (!file) return;

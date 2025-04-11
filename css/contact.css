@@ -4,6 +4,7 @@
     padding: 20px;
     border-radius: 10px;
     margin: 20px 0;
+    padding-bottom: 80px;
 }
 
 /* Email Icon Container */
@@ -31,8 +32,12 @@
     color: #060606;
     text-decoration: none;
     font-weight: 500;
+    display: inline-block; /* Make sure scaling applies properly */
+    transition: transform 0.3s ease;
+    padding: 3px;
 }
 
 .contact-section a:hover {
     text-decoration: underline;
+    transform: scale(1.1); /* Slightly increase size on hover */
 }

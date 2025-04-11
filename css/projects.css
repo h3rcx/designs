@@ -1,9 +1,9 @@
 .content-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Automatically adjusts columns based on content */
-    gap: 24px;
-    padding-left: 10%;
-    padding-right: 10%;
+    gap: 16px;
+    padding-left: 6%;
+    padding-right: 6%;
     flex-wrap: wrap;
 }
 
