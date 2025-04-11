@@ -6,6 +6,23 @@
     burger.classList.toggle('toggle');
 }
 
+let slideIndex = 0;
+
+        function moveSlide(direction) {
+            const slides = document.querySelectorAll('.slide');
+            slideIndex += direction;
+
+            // Loop back to the beginning/end of the slides
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            } else if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+
+            // Move the slides container to show the correct slide
+            document.querySelector('.slides').style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
 document.addEventListener("DOMContentLoaded", function () {
     const navItems = document.querySelectorAll(".nav-item");
     const content = document.getElementById("content");

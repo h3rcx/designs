@@ -196,3 +196,43 @@ ul {
 #content > div {
     margin-top: 5% ;
 }
+
+/*slider*/
+* {
+    margin: 0;
+    padding: 0;
+}
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.slides {
+    display: flex;
+    transition: transform 0.7s ease;
+}
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+.slide img {
+    width: 100%;
+    border-radius: 16px;
+}
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #d7ff3e;
+    padding: 16px;
+    cursor: pointer;
+    font-size: 18px;
+}
+.prev {
+    left: 0px;
+}
+.next {
+    right: 0px;
+}
