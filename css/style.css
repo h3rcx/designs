@@ -123,12 +123,12 @@ nav {
         flex-direction: column;
         position: fixed;
         top: 0;
-        left: -100vw;              /* Start off-screen to the left */
-        width: 80vw;               /* Optional: adjust width as needed */
+        left: -120vw;              /* Start off-screen to the left */
+        width: 100vw;               /* Optional: adjust width as needed */
         height: 100vh;             /* Full screen height */
         background: #d7ff3e;
         padding: 80px 24px 24px 24px;
-        transition: left 0.3s ease;
+        transition: left 0.6s ease;
         z-index: 999;
         display: flex;
     }
