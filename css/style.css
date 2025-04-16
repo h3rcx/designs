@@ -204,8 +204,8 @@ ul {
 }
 .slider {
     position: relative;
-    width: 70%;
-    max-width: 80%;
+    width: 80%;
+    max-width: 900px;
     margin: auto;
     overflow: hidden;
 }

@@ -2,9 +2,16 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Automatically adjusts columns based on content */
     gap: 16px;
-    padding-left: 12%;
-    padding-right: 12%;
+    padding-left: 11%;
+    padding-right: 11%;
     flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 }
 
 .content-grid > * {
