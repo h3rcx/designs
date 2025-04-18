@@ -63,23 +63,28 @@ document.addEventListener("DOMContentLoaded", function () {
     function loadContent(section, push = true) {
         const file = sectionFiles[section];
         if (!file) return;
-
+    
         fetch(file)
             .then(response => response.text())
             .then(data => {
                 content.innerHTML = data;
+    
+                // 💡 Scroll to top after content is loaded
+                window.scrollTo(0, 0);
+    
                 updateFooterVisibility(section);
-
+    
                 if (section === "projects") {
                     addProjectClickListeners();
                 }
-
+    
                 if (push) {
                     const path = section === "welcome" ? "/" : `/${section}`;
                     history.pushState({ section }, '', path);
                 }
             });
     }
+    
 
     function getSectionFromPath(path) {
         return sections[path] || "welcome";
