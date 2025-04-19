@@ -25,16 +25,23 @@
     flex-wrap: wrap;
 }
 
+.project-cover {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
 /* For the images, add custom sizing */
 .project-cover img {
-    max-width: 100%; /* Ensures image takes full width of the container */
-    max-height: 100%; /* Ensures image takes full height of the container */
-    object-fit: cover; /* Ensures the image scales correctly */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
     object-position: center;
     aspect-ratio: inherit;
-    display: inline-block; /* Make sure scaling applies properly */
+    display: block;
     transition: transform 0.3s ease;
 }
+
 
 .project-cover img:hover {
     transform: scale(1.1); /* Slightly increase size on hover */
