@@ -61,6 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     function loadContent(section, push = true) {
+        // Handle dynamic project pages like "project-1"
+        if (section.startsWith("project-")) {
+            const projectId = section.split("-")[1];
+            loadProject(projectId);
+            return;
+        }
+    
         const file = sectionFiles[section];
         if (!file) return;
     
@@ -83,10 +90,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     history.pushState({ section }, '', path);
                 }
             });
-    }
+    }    
     
-
     function getSectionFromPath(path) {
+        if (path.startsWith("/project-")) {
+            return path.replace("/", "");
+        }
         return sections[path] || "welcome";
     }
 
