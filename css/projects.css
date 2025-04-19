@@ -62,12 +62,16 @@
     border: 0;
   }
 
-.project-header {
-    margin: 0;
+  .project-header {
     padding: 24px 8%;
-    padding-left: 12%;
-    padding-right: 12%;
-}
+  }
+  
+  @media (max-width: 768px) {
+    .project-header {
+      padding: 24px;
+    }
+  }
+  
 
 .project-header h1 {
     margin: 0;
